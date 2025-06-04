@@ -1,32 +1,34 @@
-# TP6 - Ingeniería Reversa, Re-factoría y Re-Ingeniería
+# TP8 - Ingeniería Reversa, Re-factoría y Re-Ingeniería
 
-## 📌 Descripción
+## 👨‍💻 Materia
+Ingeniería de Software II – UADER – FCyT
 
-Este trabajo práctico parte de un archivo compilado en Python (`getJason.pyc`) correspondiente a un sistema legado sin código fuente, que tenía como objetivo recuperar un token de acceso a microservicios bancarios almacenado en un archivo `sitedata.json`.
+## 👤 Autor
+**Mauro Mottet**
 
-El objetivo fue aplicar los pasos de ingeniería reversa, realizar la decompilación, adaptar el código para permitir su reuso, y validar su funcionamiento mediante casos de prueba.
+## 📝 Descripción
 
----
+Este trabajo práctico tiene como objetivo aplicar conceptos de ingeniería de software avanzada, específicamente **ingeniería reversa**, **refactorización** y **reingeniería**, utilizando un programa base (`getJason.py`) y mejorándolo con:
 
-## 🔁 Cambios realizados
+- **Automatización del proceso de pagos**
+- **Selección automática de cuenta bancaria**
+- Implementación de los patrones de diseño:
+  - Singleton
+  - Chain of Responsibility (Cadena de Responsabilidad)
+  - Iterator (Iterador)
 
-1. **Decompilación** del archivo `getJason.pyc` usando PyLingual.
-2. **Refactorización** del código para:
-   - Aceptar una clave (`key`) como argumento opcional.
-   - Usar `"token1"` como valor por defecto.
-   - Mostrar mensajes claros de error si la clave o el archivo no existen.
-   - Mejorar la legibilidad y documentación del código.
-3. **Validación** mediante pruebas funcionales.
+## 🚀 Funcionalidad
 
----
+El sistema simula la gestión automática de pagos bancarios. Se manejan dos cuentas (`token1`, `token2`) con saldos iniciales predefinidos.
 
-## 🧪 Casos de prueba
+Cada vez que se solicita un pago:
 
-Se usó el siguiente archivo `sitedata.json`:
+- Se elige automáticamente una cuenta con saldo suficiente.
+- Se alterna entre cuentas para mantener balance.
+- Se registra cada transacción con número de pedido, token usado, clave asociada y timestamp.
+- Se lista el historial cronológico de pagos.
 
-```json
-{
-    "token1": "C598-ECF9-F0F7-881A",
-    "token2": "C598-ECF9-F0F7-881B",
-    "token3": "Boca Juniors"
-}
+Si ninguna cuenta tiene saldo suficiente, el sistema **rechaza el pago** sin producir errores.
+
+
+
